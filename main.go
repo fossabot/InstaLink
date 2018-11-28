@@ -3,6 +3,8 @@ package main
 import (
 	"net/http"
 
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"github.com/labstack/echo"
 )
 
@@ -16,4 +18,17 @@ func main() {
 		return c.String(http.StatusOK, "InstaLink is now under the construction.")
 	})
 	e.Logger.Fatal(e.Start(":1323"))
+
+	setupDB()
+}
+
+func setupDB() {
+	db, err := gorm.Open("sqlite3", "test.db")
+	if err != nil {
+		panic("failed to connect database")
+	}
+	defer db.Close()
+
+	// Migrate the schema
+	db.AutoMigrate(&MODEL_NAME{})
 }
