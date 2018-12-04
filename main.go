@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/shotastage/instalink/models"
 )
 
 func main() {
@@ -24,5 +25,5 @@ func setupDB() {
 	defer db.Close()
 
 	// Migrate the schema
-	db.AutoMigrate(&MODEL_NAME{})
+	db.AutoMigrate(models.URLEntry{})
 }
