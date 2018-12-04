@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
+	"github.com/shotastage/instalink/core"
 )
 
 func RootView(c echo.Context) error {
@@ -22,4 +23,24 @@ func RootView(c echo.Context) error {
 </body>
 </html>
 	`)
+}
+
+func ServiceReady(c echo.Context) error {
+
+	m := &core.Message{
+		Message: "Ready to provide all services.",
+		Type:    "String",
+	}
+
+	return c.JSONPretty(http.StatusOK, m, " ")
+}
+
+func PingPong(c echo.Context) error {
+
+	m := &core.Message{
+		Message: "Pong",
+		Type:    "String",
+	}
+
+	return c.JSONPretty(http.StatusOK, m, " ")
 }
