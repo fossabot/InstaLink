@@ -5,7 +5,7 @@ type Configuration struct {
 		host string `json:"host"`
 		port string `json:"port"`
 	}
-	Datanbase struct {
+	Database struct {
 		host     string `json:"host"`
 		port     string `json:"port"`
 		user     string `json:"user"`
