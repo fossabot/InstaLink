@@ -1,14 +1,11 @@
-
-import (
-	"github.com/labstack/echo"
-)
+import "github.com/labstack/echo"
 
 // Init is a router initializing function
 func InitRouter() *echo.Echo {
 
 	e := echo.New()
 
-	e.GET("/", status.RootView)
+	e.GET("/", base.RootView)
 
 	// Routings
 	u1 := e.Group("/utility/api/v1")
@@ -18,3 +15,4 @@ func InitRouter() *echo.Echo {
 
 	return e
 }
+
